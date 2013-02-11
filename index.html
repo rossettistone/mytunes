@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <script src="http://cdnjs.cloudflare.com/ajax/libs/jquery/1.8.3/jquery.min.js"></script>
+  <link rel="stylesheet" type="text/css" href="styles.css" />
+ 
+  <!-- Bootstrap + Bootswatch -->
+  <link rel="stylesheet" type="text/css" href="vendors/bootstrap.css" />
+  <link rel="stylesheet" type="text/css" href="vendors/bootstrap-responsive.css" />
+  <link rel="stylesheet" type="text/css" href="vendors/bootstrapcustom.css" />
+
+  <!-- jQuery UI -->
+  <link rel="stylesheet" type="text/css" href="vendors/jquery-ui-1.9.2.custom.css" />
+  <script src="vendors/jquery-ui-1.9.2.custom.js"></script>
+
+  <script src="http://cdnjs.cloudflare.com/ajax/libs/underscore.js/1.4.2/underscore-min.js"></script>
+  <script src="http://cdnjs.cloudflare.com/ajax/libs/backbone.js/0.9.2/backbone-min.js"></script>
+  <script src="src/data.js"></script>
+  <script src="src/Songs.js"></script>
+  <script src="vendors/bootstrap.js"></script>
+  <script src="src/PlayerView.js"></script>
+  <script src="src/LibraryView.js"></script>
+  <script src="src/LibraryEntryView.js"></script>
+  <script src="src/PlaylistView.js"></script>
+  <script src="src/PlaylistEntryView.js"></script>
+  <script>
+
+    $(function(){
+      var songs = new Songs();
+      songs.reset(data);
+
+      var player = new PlayerView({collection: songs});
+      var library = new LibraryView({collection: songs});
+      var playlistView = new PlaylistView({collection: songs});
+
+      $(".span12").append(
+        player.render(),
+        playlistView.render(),
+        library.render()
+      );
+
+    });
+  </script>
+   <style>
+    .btn-danger{
+      margin-right: 10px;
+    }
+    .row-fluid{
+      margin-top: 5%;
+    }
+    audio{
+      width:100%;
+      opacity:0.7;
+     }
+    body{
+      background-image: url('vendors/wild_oliva.png');
+    }
+  </style>
+</head>
+<body>
+  <div class='container'>
+    <div class="row">
+    </div>
+    <div class='row-fluid'>
+      <div class="span12">
+      </div>
+    </div>
+  </div>
+</body>
+</html>
